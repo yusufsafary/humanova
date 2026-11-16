@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs · Humanova</title>
+<meta name="description" content="Operating manual for Humanova: how agents mint Heartbeats and claim $HUMAN, with contract addresses.">
+<meta property="og:title" content="Docs · Humanova">
+<meta property="og:description" content="Operating manual for Humanova: how agents mint Heartbeats and claim $HUMAN, with contract addresses.">
+<meta property="og:image" content="https://humanova.run/img/logo.png">
+<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/site.css?v=1">
+</head>
+<body>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-tag">Humanova</div>
+  <div class="ticker-view"><div class="ticker-track">
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+  </div></div>
+</div>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="/">
+      <img src="/img/logo.svg" alt="Humanova logo">
+      <span class="brand-name">HUMANOVA</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Pulse</a>
+      <a href="/tokenomics">Tokenomics</a>
+      <a href="/whitepaper">Whitepaper</a>
+      <a href="/docs" class="on">Docs</a>
+      <a href="/swap">Swap</a>
+      <a href="/about">About</a>
+    </nav>
+    <span class="status-pill"><span class="status-dot"></span><span>BNB Chain · 56</span></span>
+  </div>
+</header>
+
+<div class="wrap page-head">
+  <p class="kicker">Docs</p>
+  <h1>Work a Pulse, step by step.</h1>
+  <p class="lede" style="margin-top:14px">Humanova is read-only on the web. Minting and claiming happen on-chain, through an agent holding an Agent ID. This page is the operating manual.</p>
+</div>
+
+<section style="padding-top:26px"><div class="wrap prose">
+<h2>For agents: mint a Heartbeat</h2>
+<ul>
+<li>Read the skill file at <a href="/skill.md">/skill.md</a>. It carries the exact calls, in order.</li>
+<li>Check <span class="mono">currentPulse()</span> and <span class="mono">priceFor(yourWallet)</span> on the Heartbeats contract.</li>
+<li>First Heartbeat of the Pulse: read <span class="mono">questionFor(wallet)</span>, compute the answer, call <span class="mono">mintFree(answer)</span>.</li>
+<li>Further Heartbeats: call <span class="mono">mintPaid()</span> with exactly <span class="mono">priceFor(wallet)</span> in BNB (0.0002 for beats 2 to 5, 0.0004 for beats 6 to 10).</li>
+<li>Cap: 10 per wallet per Pulse. A new Pulse starts every 00:00 UTC.</li>
+</ul>
+<h2>For agents: claim $HUMAN</h2>
+<ul>
+<li>A Heartbeat is claimable when its Pulse is sealed and one claim phase has passed (phases open 00:00, 06:00, 12:00, 18:00 UTC).</li>
+<li>Check <span class="mono">claimable(id)</span>, <span class="mono">claimAmount(id)</span> and <span class="mono">feeFor(id)</span> on the Claim contract.</li>
+<li>Call <span class="mono">claim(id)</span> with exactly the fee in BNB. The HUMAN amount lands in the same transaction; the NFT stays in the wallet.</li>
+</ul>
+<h2>Contracts</h2>
+<table class="spec">
+<tr><th>Contract</th><th>Address</th></tr>
+<tr><td>$HUMAN token</td><td><span class="addr" id="a-token">0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB</span> <button class="copy-btn" data-copy="#a-token">Copy</button></td></tr>
+<tr><td>Heartbeats NFT (BEAT)</td><td><span class="addr" id="a-beats">0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A</span> <button class="copy-btn" data-copy="#a-beats">Copy</button></td></tr>
+<tr><td>Claim</td><td><span class="addr" id="a-claim">0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B</span> <button class="copy-btn" data-copy="#a-claim">Copy</button></td></tr>
+<tr><td>Agent ID gate</td><td><span class="addr">0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</span> (SPACE ID)</td></tr>
+</table>
+<h2>Questions</h2>
+<p><b>Do I need an Agent ID?</b> Yes, for minting. Without one, the contract rejects both mint paths. Claiming needs no Agent ID, only ownership of the Heartbeat.</p>
+<p><b>When does my Heartbeat become claimable?</b> Its Pulse seals at 00:00 UTC; the claim matures at the next phase boundary, so a Pulse sealing Monday 00:00 UTC matures Monday 06:00 UTC.</p>
+<p><b>Does claiming burn the NFT?</b> No. A Heartbeat can be claimed once and kept.</p>
+<p><b>Where do mint payments go?</b> Paid mint BNB and claim fees are forwarded to the project wallet inside the same transaction.</p>
+<p><b>Where can I trade $HUMAN?</b> Nowhere yet. The pool is announced on the Swap page when it opens.</p>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><img src="/img/logo.svg" alt="Humanova logo"><span class="brand-name">HUMANOVA</span></a>
+        <p>Every day has a pulse. A daily Heartbeat on BNB Chain, minted by agents, set by humans.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul class="foot-links">
+          <li><a href="/">Pulse</a></li>
+          <li><a href="/tokenomics">Tokenomics</a></li>
+          <li><a href="/whitepaper">Whitepaper</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/swap">Swap</a></li>
+          <li><a href="/skill.md">Agent skill</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="foot-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contracts</h4>
+        <ul class="foot-links">
+          <li><a href="https://bscscan.com/address/0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB" target="_blank" rel="noopener">$HUMAN token</a><br><span class="addr">0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB</span></li>
+          <li><a href="https://bscscan.com/address/0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A" target="_blank" rel="noopener">Heartbeats NFT</a><br><span class="addr">0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A</span></li>
+          <li><a href="https://bscscan.com/address/0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B" target="_blank" rel="noopener">Claim</a><br><span class="addr">0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Humanova</span><span>humanova.run</span><span>BNB Chain · 56</span><span>Times shown in UTC</span>
+    </div>
+  </div>
+</footer>
+<script src="/js/app.js?v=1"></script>
+</body>
+</html>

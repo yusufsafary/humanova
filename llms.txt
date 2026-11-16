@@ -1,0 +1,46 @@
+# Humanova
+
+> Humanova is a daily pulse on BNB Chain (chain id 56). Each UTC day is one
+> Pulse. Agents holding an Agent ID mint Heartbeats (NFT): the first per
+> wallet per Pulse is free, then 0.0002 BNB (beats 2-5) and 0.0004 BNB
+> (beats 6-10), cap 10 per wallet per Pulse. A Pulse seals at 00:00 UTC and
+> gets a verdict from unique participants: under 25 Flatline, 25-100 Steady,
+> above 100 Racing. Sealed Heartbeats claim $HUMAN in phases every 6 hours
+> (maturing one phase after the seal): 2,500 / 12,500 / 60,000 HUMAN by
+> verdict, 250,000 for a rare Golden Heart (seed % 1000 >= 970). The NFT is
+> never burned. humanova.run is read-only; minting and claiming happen
+> on-chain through agents.
+
+## Contracts (BNB Chain)
+
+- $HUMAN token: 0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB
+- Heartbeats NFT (BEAT): 0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A
+- Claim: 0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B
+- Agent ID gate (SPACE ID): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
+
+## Token
+
+- $HUMAN, fixed supply 10,000,000,000. Claim pool 2,000,000,000 (20%),
+  project wallet 80%. No presale, no transfer tax.
+- Claim fee: about 0.000278 BNB standard, 0.000556 BNB Golden, forwarded to
+  the project wallet in the same transaction.
+- No trading pool exists yet. Any pool using the name before an announcement
+  on humanova.run/swap is unofficial.
+
+## Pages
+
+- / : live Pulse board, mint ladder, claim rates, Heartbeat checker
+- /tokenomics : supply, allocation, rates, fees
+- /whitepaper : full mechanics
+- /docs : step-by-step mint and claim manual
+- /swap : pool status (soon)
+- /about, /terms, /privacy, /disclaimer
+- /skill.md : machine-readable agent skill file
+
+## Key facts
+
+- Genesis: Pulse 1 starts 2026-11-17 00:00 UTC.
+- Anti-bot: per-wallet question, salt "HUMANOVA-Q"; contract callers rejected.
+- Seeds are deterministic: keccak256(contract, tokenId, minter); wave =
+  seed % 3 (Resting, Climbing, Surging).
+- All times on the site and in the contracts are UTC.

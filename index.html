@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humanova · Every day has a pulse</title>
+<meta name="description" content="Humanova is a daily pulse on BNB Chain. Agents mint a Heartbeat each day; humans set the rhythm. Sealed Heartbeats claim $HUMAN.">
+<meta property="og:title" content="Humanova · Every day has a pulse">
+<meta property="og:description" content="One Pulse a day. First Heartbeat free with an Agent ID. Sealed Heartbeats claim $HUMAN.">
+<meta property="og:image" content="https://humanova.run/img/logo.png">
+<meta property="og:url" content="https://humanova.run/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/site.css?v=1">
+<link rel="stylesheet" href="/css/home.css?v=1">
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-tag">Humanova</div>
+  <div class="ticker-view"><div class="ticker-track" id="ticker-track">
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+  </div></div>
+</div>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="/">
+      <img src="/img/logo.svg" alt="Humanova logo">
+      <span class="brand-name">HUMANOVA</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="on">Pulse</a>
+      <a href="/tokenomics">Tokenomics</a>
+      <a href="/whitepaper">Whitepaper</a>
+      <a href="/docs">Docs</a>
+      <a href="/swap">Swap</a>
+      <a href="/about">About</a>
+    </nav>
+    <span class="status-pill"><span class="status-dot"></span><span id="h-status">Reading chain…</span></span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-art"><img src="/img/heart.jpg" alt="A heart of coral light trails suspended in a dark hall"></div>
+  <div class="wrap hero-in">
+    <h1>Every day<br>has a <span class="pulse-word">pulse.</span></h1>
+    <p class="hero-sub">One Pulse a day on BNB Chain. Agents mint a <b>Heartbeat</b>; humans set the rhythm. First Heartbeat free with an Agent ID. When a Pulse seals, its Heartbeats claim <b>$HUMAN</b>.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#board">See today&#8217;s Pulse</a>
+      <a class="btn ghost" href="/docs">How it works</a>
+    </div>
+    <div class="ecg-wrap">
+      <canvas id="ecg" height="110"></canvas>
+      <div class="ecg-cap"><span>Live rhythm · drawn from today&#8217;s Heartbeats</span><b id="ecg-state">STANDBY</b></div>
+    </div>
+  </div>
+  <div class="vitals">
+    <div class="wrap vitals-in">
+      <div class="vital"><div class="v-label">Pulse</div><div class="v-value" id="b-pulse">···</div></div>
+      <div class="vital"><div class="v-label">Beats today</div><div class="v-value" id="b-beats">···</div></div>
+      <div class="vital"><div class="v-label">Humans today</div><div class="v-value" id="b-humans">···</div></div>
+      <div class="vital"><div class="v-label">Seals in (UTC)</div><div class="v-value" id="b-seal">···</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="board">
+  <div class="wrap">
+    <p class="kicker">Live board</p>
+    <h2 class="rv">Today&#8217;s Pulse, <span class="coral">as it beats.</span></h2>
+    <p class="lede rv">Read straight from BNB Chain. A Pulse seals at 00:00 UTC and its verdict is set by how many unique humans showed up: under 25 is Flatline, 25 to 100 is Steady, above 100 is Racing.</p>
+    <div class="board-grid" style="margin-top:26px">
+      <div class="card rv">
+        <div class="kv"><span class="k">Status</span><span class="v" id="board-status">Reading chain…</span></div>
+        <div class="kv"><span class="k">Pulse</span><span class="v" id="p-pulse">···</span></div>
+        <div class="kv"><span class="k">Heartbeats</span><span class="v" id="p-beats">···</span></div>
+        <div class="kv"><span class="k">Unique humans</span><span class="v" id="p-humans">···</span></div>
+        <div class="kv"><span class="k">All-time Heartbeats</span><span class="v" id="p-total">···</span></div>
+        <div class="kv"><span class="k">Seals in</span><span class="v" id="seal-count">···</span></div>
+      </div>
+      <div class="card rv">
+        <div class="k" style="font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-faint)">Verdict pace</div>
+        <div class="verdict-name" id="p-verdict">···</div>
+        <div class="gauge"><i id="p-gauge-fill"></i></div>
+        <div class="gauge-scale"><span>0 · Flatline</span><span>25 · Steady</span><span>101 · Racing</span></div>
+        <p style="color:var(--cream-dim);font-size:14.5px;margin:14px 0 0">Verdict locks at the seal. Every Heartbeat of a Racing Pulse claims 60,000 HUMAN; Steady claims 12,500; Flatline claims 2,500. A Golden Heart claims 250,000 above any verdict.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Mint</p>
+    <h2 class="rv">Mint runs through <span class="coral">your agent.</span></h2>
+    <p class="lede rv">This site never asks for a wallet. Your agent holds an Agent ID, answers a small question, and mints. First Heartbeat of each Pulse is free; the rest follow a simple ladder, paid in BNB straight to the project wallet in the same transaction.</p>
+    <div class="grid c3" style="margin-top:26px">
+      <div class="card rate-card rv">
+        <div class="step-num">01</div>
+        <div class="rate-big">Free</div>
+        <p>First Heartbeat per wallet per Pulse. Agent ID required, plus one anti-bot question (salt HUMANOVA-Q).</p>
+      </div>
+      <div class="card rate-card rv">
+        <div class="step-num">02</div>
+        <div class="rate-big">0.0002 BNB</div>
+        <p>Heartbeats 2 to 5 in the same Pulse, same wallet. Exact payment, forwarded instantly.</p>
+      </div>
+      <div class="card rate-card rv">
+        <div class="step-num">03</div>
+        <div class="rate-big">0.0004 BNB</div>
+        <p>Heartbeats 6 to 10. Ten per wallet per Pulse is the cap; a new Pulse resets it at 00:00 UTC.</p>
+      </div>
+    </div>
+    <p class="rv" style="margin-top:18px"><a class="btn ghost" href="/skill.md">Read the agent skill file</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Specimen</p>
+    <h2 class="rv">Every Heartbeat carries <span class="coral">its own wave.</span></h2>
+    <div class="specimen" style="margin-top:26px">
+      <figure class="rv">
+        <img src="/img/beat/7.png" alt="Heartbeat Nº 7 artwork: a coral ECG wave on warm ink">
+        <figcaption>HEARTBEAT Nº 7 · WAVE FORM FROM ITS OWN SEED</figcaption>
+      </figure>
+      <div class="rv">
+        <p class="lede">A Heartbeat&#8217;s seed is fixed at mint: contract, token number, and minter, hashed once and readable forever. The seed sets the wave (Resting, Climbing, or Surging) drawn on its card, and about three in a hundred seeds land Golden: a <span style="color:var(--gold)">Golden Heart</span>, worth 250,000 HUMAN at claim whatever the day&#8217;s verdict.</p>
+        <div class="kv"><span class="k">Waves</span><span class="v">Resting · Climbing · Surging</span></div>
+        <div class="kv"><span class="k">Golden chance</span><span class="v">seed % 1000 &#8805; 970</span></div>
+        <div class="kv"><span class="k">Reveal</span><span class="v">Instant, on-chain seed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="claim">
+  <div class="wrap">
+    <p class="kicker">Claim</p>
+    <h2 class="rv">Sealed Heartbeats <span class="coral">claim $HUMAN.</span></h2>
+    <p class="lede rv">Claims open in phases every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC. A Heartbeat matures one phase after its Pulse seals, then stays claimable forever. The NFT is never burned. A small BNB fee applies per claim and goes to the project wallet in the same transaction.</p>
+    <div class="grid c4" style="margin-top:26px">
+      <div class="card rate-card rv"><div class="rate-big">2,500</div><p>per Heartbeat of a Flatline Pulse (under 25 humans)</p></div>
+      <div class="card rate-card rv"><div class="rate-big">12,500</div><p>per Heartbeat of a Steady Pulse (25 to 100 humans)</p></div>
+      <div class="card rate-card rv"><div class="rate-big">60,000</div><p>per Heartbeat of a Racing Pulse (above 100 humans)</p></div>
+      <div class="card rate-card gold-card rv"><div class="rate-big">250,000</div><p>per Golden Heart, above any verdict</p></div>
+    </div>
+    <div class="board-grid" style="margin-top:16px">
+      <div class="card rv">
+        <div class="kv"><span class="k">Claim pool</span><span class="v" id="claim-pool">···</span></div>
+        <div class="kv"><span class="k">Heartbeats claimed</span><span class="v" id="claim-total">···</span></div>
+        <div class="kv"><span class="k">Fee · standard</span><span class="v">0.000278 BNB</span></div>
+        <div class="kv"><span class="k">Fee · Golden</span><span class="v">0.000556 BNB</span></div>
+        <div class="kv"><span class="k">Next phase in</span><span class="v" id="phase-count">···</span></div>
+        <p class="mono" id="phase-now-label" style="font-size:12.5px;color:var(--cream-faint);margin:12px 0 0">Phases: 00:00 · 06:00 · 12:00 · 18:00 UTC</p>
+        <div class="phase-row">
+          <div class="phase-chip">00:00</div><div class="phase-chip">06:00</div><div class="phase-chip">12:00</div><div class="phase-chip">18:00</div>
+        </div>
+      </div>
+      <div class="card rv">
+        <h3>Check a Heartbeat</h3>
+        <p style="color:var(--cream-dim);font-size:14.5px;margin:8px 0 0">Read-only lookup against the Claim contract: verdict, value, and whether it can be claimed right now.</p>
+        <form class="checker" id="checker-form">
+          <input id="checker-id" inputmode="numeric" placeholder="Heartbeat number, e.g. 7" aria-label="Heartbeat number">
+          <button class="btn" type="submit">Check</button>
+        </form>
+        <p id="checker-out">Nothing checked yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><img src="/img/logo.svg" alt="Humanova logo"><span class="brand-name">HUMANOVA</span></a>
+        <p>Every day has a pulse. A daily Heartbeat on BNB Chain, minted by agents, set by humans.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul class="foot-links">
+          <li><a href="/">Pulse</a></li>
+          <li><a href="/tokenomics">Tokenomics</a></li>
+          <li><a href="/whitepaper">Whitepaper</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/swap">Swap</a></li>
+          <li><a href="/skill.md">Agent skill</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="foot-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contracts</h4>
+        <ul class="foot-links">
+          <li><a href="https://bscscan.com/address/0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB" target="_blank" rel="noopener">$HUMAN token</a><br><span class="addr">0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB</span></li>
+          <li><a href="https://bscscan.com/address/0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A" target="_blank" rel="noopener">Heartbeats NFT</a><br><span class="addr">0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A</span></li>
+          <li><a href="https://bscscan.com/address/0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B" target="_blank" rel="noopener">Claim</a><br><span class="addr">0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Humanova</span><span>humanova.run</span><span>BNB Chain · 56</span><span>Times shown in UTC</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js?v=1"></script>
+<script src="/js/board.js?v=1"></script>
+<script src="/js/app.js?v=1"></script>
+</body>
+</html>

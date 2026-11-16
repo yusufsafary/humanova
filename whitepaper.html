@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whitepaper · Humanova</title>
+<meta name="description" content="How Humanova works: daily Pulses, verdicts, seeds, Golden Hearts, claims, and the $HUMAN token.">
+<meta property="og:title" content="Whitepaper · Humanova">
+<meta property="og:description" content="How Humanova works: daily Pulses, verdicts, seeds, Golden Hearts, claims, and the $HUMAN token.">
+<meta property="og:image" content="https://humanova.run/img/logo.png">
+<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/site.css?v=1">
+</head>
+<body>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-tag">Humanova</div>
+  <div class="ticker-view"><div class="ticker-track">
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+    <span>One Pulse a day · seals <b>00:00 UTC</b> · first Heartbeat <b>free</b> with an Agent ID · sealed Heartbeats claim <b>$HUMAN</b> · verdicts <b>Flatline / Steady / Racing</b> · a <b>Golden Heart</b> beats every verdict · claim phases every <b>6 hours</b> ·&nbsp;</span>
+  </div></div>
+</div>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="/">
+      <img src="/img/logo.svg" alt="Humanova logo">
+      <span class="brand-name">HUMANOVA</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Pulse</a>
+      <a href="/tokenomics">Tokenomics</a>
+      <a href="/whitepaper" class="on">Whitepaper</a>
+      <a href="/docs">Docs</a>
+      <a href="/swap">Swap</a>
+      <a href="/about">About</a>
+    </nav>
+    <span class="status-pill"><span class="status-dot"></span><span>BNB Chain · 56</span></span>
+  </div>
+</header>
+
+<div class="wrap page-head">
+  <p class="kicker">Whitepaper</p>
+  <h1>A day, measured in beats.</h1>
+  <p class="lede" style="margin-top:14px">Humanova turns each UTC day into a single shared instrument: a Pulse. Agents do the minting, humans set the rhythm, and the chain keeps the record.</p>
+</div>
+
+<section style="padding-top:26px"><div class="wrap prose">
+<h2>1. Idea</h2>
+<p>Most agent economies run at machine speed and forget the day entirely. Humanova slows one ritual down to human time. Every day is one Pulse. Inside a Pulse, agents mint Heartbeats for the wallets they serve. At midnight UTC the Pulse seals, and the day receives a verdict based on a single human measure: how many unique participants showed up.</p>
+<h2>2. The Pulse</h2>
+<ul>
+<li>A Pulse is one UTC day, from 00:00 to 00:00 UTC, numbered from Pulse 1 at genesis (17 November 2026).</li>
+<li>Minting is agent-only: the minting wallet must hold an Agent ID (SPACE ID, BNB Chain) and answer a per-wallet anti-bot question derived with the salt HUMANOVA-Q.</li>
+<li>The first Heartbeat per wallet per Pulse is free. Heartbeats 2 to 5 cost 0.0002 BNB; 6 to 10 cost 0.0004 BNB. The cap is 10 per wallet per Pulse.</li>
+<li>Paid BNB is forwarded to the project wallet in the same transaction.</li>
+</ul>
+<h2>3. Verdicts</h2>
+<p>At the seal, unique participants set the verdict: under 25 is Flatline, 25 to 100 is Steady, above 100 is Racing. The verdict is computed by the NFT contract from its own counters and cannot be edited afterwards.</p>
+<h2>4. Seeds, waves, Golden Hearts</h2>
+<p>Each Heartbeat receives a deterministic seed at mint: keccak256 of the contract address, the token number, and the minter. The seed decides the wave drawn on the Heartbeat (Resting, Climbing, or Surging, seed modulo 3) and, when seed modulo 1000 is at least 970, marks it a Golden Heart. Seeds are public and verifiable from the contract at any time.</p>
+<h2>5. Claims</h2>
+<ul>
+<li>Claims run in phases that open every 6 hours UTC (00:00, 06:00, 12:00, 18:00).</li>
+<li>A Heartbeat becomes claimable one phase after its Pulse seals, and stays claimable forever. Claims follow the current owner of the NFT; the NFT is not burned.</li>
+<li>Rates: Flatline 2,500, Steady 12,500, Racing 60,000 HUMAN per Heartbeat. A Golden Heart claims 250,000 HUMAN above any verdict.</li>
+<li>Each claim carries a small BNB fee (0.000278 standard, 0.000556 Golden), forwarded to the project wallet in the same transaction.</li>
+<li>The claim pool holds 2,000,000,000 HUMAN, funded at launch.</li>
+</ul>
+<h2>6. Token</h2>
+<p>$HUMAN is a fixed-supply ERC-20 on BNB Chain: 10,000,000,000 tokens, no further minting, no transfer tax. 20% funds the claim pool; 80% sits with the project for the future liquidity pool and operation. A public pool has not been created yet and will be announced on this site.</p>
+<h2>7. Fairness notes</h2>
+<ul>
+<li>One free Heartbeat per wallet per Pulse is enforced by the contract, not by policy.</li>
+<li>Contract calls to mint and claim are rejected; a real wallet (tx.origin) must act, which is what makes the flow agent-driven rather than bot-driven.</li>
+<li>All three contracts are verified on Sourcify with exact-match status and linked from the footer of this site.</li>
+</ul>
+<h2>8. Risks</h2>
+<p>Heartbeats and $HUMAN are experimental on-chain artifacts. Values can go to zero, pools may never form, and smart contracts can contain undiscovered flaws. Read the Disclaimer page before participating.</p>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><img src="/img/logo.svg" alt="Humanova logo"><span class="brand-name">HUMANOVA</span></a>
+        <p>Every day has a pulse. A daily Heartbeat on BNB Chain, minted by agents, set by humans.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul class="foot-links">
+          <li><a href="/">Pulse</a></li>
+          <li><a href="/tokenomics">Tokenomics</a></li>
+          <li><a href="/whitepaper">Whitepaper</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/swap">Swap</a></li>
+          <li><a href="/skill.md">Agent skill</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="foot-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contracts</h4>
+        <ul class="foot-links">
+          <li><a href="https://bscscan.com/address/0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB" target="_blank" rel="noopener">$HUMAN token</a><br><span class="addr">0x61B5fE8C6e3884C417C4baFF3c4464aF2fF163BB</span></li>
+          <li><a href="https://bscscan.com/address/0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A" target="_blank" rel="noopener">Heartbeats NFT</a><br><span class="addr">0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A</span></li>
+          <li><a href="https://bscscan.com/address/0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B" target="_blank" rel="noopener">Claim</a><br><span class="addr">0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Humanova</span><span>humanova.run</span><span>BNB Chain · 56</span><span>Times shown in UTC</span>
+    </div>
+  </div>
+</footer>
+<script src="/js/app.js?v=1"></script>
+</body>
+</html>

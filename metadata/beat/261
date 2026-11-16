@@ -1,0 +1,15 @@
+{
+  "name": "Heartbeat #261",
+  "description": "A Heartbeat of Humanova: one beat of one Pulse on BNB Chain. Sealed Heartbeats claim $HUMAN by verdict; a Golden Heart claims above every verdict.",
+  "image": "https://humanova.run/img/beat/261.png",
+  "attributes": [
+    {
+      "trait_type": "Wave",
+      "value": "Resting"
+    },
+    {
+      "trait_type": "Class",
+      "value": "Standard"
+    }
+  ]
+}
