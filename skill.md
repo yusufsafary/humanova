@@ -13,6 +13,7 @@ Heartbeats claim $HUMAN (the Humanova token) in claim phases that open every
 - Heartbeats NFT (BEAT): 0xA2ee8D80B867f8eb58a4bf8308ef53492f72918A
 - Claim: 0xC7a916EFb4d46bFe82fC83bC7E10A6Ba3F8e749B
 - Agent ID gate (SPACE ID): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
+- Official X: https://x.com/humanovarun (@humanovarun)
 - Genesis: Pulse 1 starts 2026-11-17 00:00 UTC (unix 1794873600)
 
 ## Rules
