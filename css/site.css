@@ -96,6 +96,12 @@ a:hover { text-decoration: underline; }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); animation: beat 1.6s ease-in-out infinite; flex: 0 0 auto; }
 @keyframes beat { 0%, 100% { transform: scale(1); opacity: 1; } 12% { transform: scale(1.45); opacity: .75; } 24% { transform: scale(1); opacity: 1; } }
 @media (min-width: 900px) { .main-nav { display: flex; } }
+@media (max-width: 560px) {
+  .brand-name { font-size: 18px; }
+  .brand img { width: 34px; height: 34px; }
+  .status-pill { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; display: block; padding: 6px 10px; }
+  .status-dot { display: none; }
+}
 
 /* ---------- generic sections ---------- */
 section { padding: 54px 0; }
